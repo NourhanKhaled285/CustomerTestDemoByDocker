@@ -1,0 +1,90 @@
+﻿@model Customer
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h1>Add New Customer</h1>
+<br />
+<br />
+
+<div class="row">
+    <div class="col-6">
+        <form asp-action="Create" asp-controller="Customer">
+<div class="form-group">
+              <label asp-for="@Model.CustomerFirstName" class="col-form-label"></label>
+              <input asp-for="@Model.CustomerFirstName"  class="form-control"/>
+              <span asp-validation-for="@Model.CustomerFirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.CustomerLastName" class="col-form-label"></label>
+                <input asp-for="@Model.CustomerLastName" class="form-control"/>
+                <span asp-validation-for="@Model.CustomerLastName" class="text-danger"></span>
+            </div>
+
+       
+
+            <div class="form-group">
+                <label asp-for="@Model.CustomerEmail" class="col-form-label"></label>
+                <input asp-for="@Model.CustomerEmail" class="form-control"/>
+                <span asp-validation-for="@Model.CustomerEmail" class="text-danger"></span>        
+            </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.CustomerDOB" class="col-form-label"></label>
+                <input asp-for="@Model.CustomerDOB" class="form-control"/>
+                <span asp-validation-for="@Model.CustomerDOB" class="text-danger"></span>
+            </div>
+
+<div> CustomerGender</div>
+<br/>
+<div>
+<div class="custom-control custom-radio">
+    <input type="radio" 
+        id="@("Female")"
+        asp-for="@Model.CustomerGender"
+        checked
+        value="F" class="custom-control-input"
+       
+    />
+    <label 
+        for="@("Female")"
+        class="custom-control-label" 
+        style="color: #212529;font-size:14px"
+    >Female</label>
+
+     <span asp-validation-for="@Model.CustomerGender" class="text-danger"></span>
+</div>
+
+<div class="custom-control custom-radio"> 
+    <input type="radio" 
+        id="@("Male")"
+        asp-for="@Model.CustomerGender" 
+        value="M"  class="custom-control-input" 
+        
+    />
+    <label 
+        for="@("Male")"
+        class="custom-control-label" 
+        style="color: #212529;font-size:14px"
+    >Male</label>
+     <span asp-validation-for="@Model.CustomerGender" class="text-danger"></span>
+</div>
+</div>
+
+
+            @*/////////////////////////////////////////////////////////*@
+
+            <br />
+            <input type="submit" value="Add" class="btn btn-primary" />
+            <a asp-action="Index" asp-route-currentpage=1 class="btn btn-light">Back To List</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+}
+

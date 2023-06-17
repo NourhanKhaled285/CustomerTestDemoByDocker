@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Customer>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h1>All Customers</h1>
+<br />
+<a asp-action="Create" asp-controller="Customer" class="btn btn-primary">Create New Customer</a>
+<br />
+<br />
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-info">
+        @ViewData["Message"]
+
+    </div>
+}
+
+@if (Model?.Count() > 0)
+{
+ 
+ 
+
+    <table class="table table-stripped table-hover">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(M => M.CustomerID)</th>
+                <th>@Html.DisplayNameFor(M => M.CustomerFirstName)</th>
+                <th>@Html.DisplayNameFor(M => M.CustomerLastName)</th>
+                <th>@Html.DisplayNameFor(M => M.CustomerGender)</th>
+                <th>@Html.DisplayNameFor(M => M.CustomerDOB)</th>
+                <th>@Html.DisplayNameFor(M => M.CustomerEmail)</th>
+
+                <th>Details</th>
+                <th>Update</th>
+                <th>Delete</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><a asp-action="Details" asp-route-id=@item.CustomerID>@item.CustomerID</a></td>
+                    <td>@item.CustomerFirstName</td>
+                    <td>@item.CustomerLastName</td>
+                    <td>@item.CustomerGender</td>
+                    <td>@item.CustomerDOB</td>
+                    <td>@item.CustomerEmail</td>
+
+                    @*  <td>@item.customerAd</td>*@
+
+                    <partial name="_ButtonsPartialView" model="item.CustomerID.ToString()" />
+                </tr>
+            }
+        </tbody>
+    </table>
+   
+}
+else
+{
+    <div class="alert alert-warning">
+        <h4>No Customers Found!!</h4>
+    </div>
+}
+
